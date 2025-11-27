@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Meu Portfólio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-custom" href="../index.html">Portfólio Kamilie</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./sobre-mim.html">Sobre Mim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contato.html">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="contato mt-5 pt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <h1 class="card-title text-center mb-4">Entre em Contato</h1>
+                            <form id="form-contato" class="needs-validation" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="nome" class="form-label">Nome Completo</label>
+                                        <input type="text" class="form-control" id="nome" name="nome" required>
+                                        <div class="invalid-feedback">
+                                            Por favor, digite seu nome.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">E-mail</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                        <div class="invalid-feedback">
+                                            Por favor, digite um e-mail válido.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="assunto" class="form-label">Assunto</label>
+                                    <input type="text" class="form-control" id="assunto" name="assunto" required>
+                                    <div class="invalid-feedback">
+                                        Por favor, digite o assunto.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mensagem" class="form-label">Mensagem</label>
+                                    <textarea class="form-control" id="mensagem" name="mensagem" rows="5" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Por favor, digite sua mensagem.
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">Enviar Mensagem</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Sucesso -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mensagem Enviada!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Sua mensagem foi enviada com sucesso! Entrarei em contato em breve.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- SCRIPT DO FORMULÁRIO -->
+<!-- Esta seção contém o JavaScript que controla o formulário de contato -->
+<script>
+    // Aguarda o DOM (Document Object Model) ser completamente carregado antes de executar
+    // Isso garante que todos os elementos HTML estejam disponíveis para manipulação
+    document.addEventListener('DOMContentLoaded', function() {
+        // Exibe mensagem no console para confirmar que o script está funcionando
+        console.log(' Página carregada!');
+        
+        // Busca o elemento do formulário pelo ID "form-contato"
+        const formContato = document.getElementById('form-contato');
+        
+        // Verifica se o formulário foi encontrado na página
+        if (formContato) {
+            // Confirma no console que o formulário foi encontrado
+            console.log(' Formulário encontrado!');
+            
+            // Adiciona um "escutador de eventos" para quando o formulário for enviado (submit)
+            formContato.addEventListener('submit', function(e) {
+                // 'e' é o objeto de evento que contém informações sobre o envio do formulário
+                console.log(' Clicou em enviar!');
+                
+                // IMPEDE o comportamento padrão do formulário (que seria recarregar a página)
+                e.preventDefault();
+                
+                // PARA a propagação do evento para outros elementos que possam estar escutando
+                e.stopPropagation();
+                
+                // Verifica se todos os campos obrigatórios estão preenchidos corretamente
+                // checkValidity() é um método nativo dos formulários HTML5
+                if (!formContato.checkValidity()) {
+                    // Se o formulário for inválido, exibe mensagem no console
+                    console.log(' Formulário inválido');
+                    
+                    // Adiciona classe do Bootstrap que mostra mensagens de validação visuais
+                    formContato.classList.add('was-validated');
+                    
+                    // Sai da função sem enviar o formulário
+                    return;
+                }
+                
+                // Se chegou aqui, o formulário é válido
+                console.log(' Formulário válido, enviando...');
+                
+                // Cria um objeto FormData - captura automaticamente todos os campos do formulário
+                const formData = new FormData(formContato);
+                
+                // Mostrar dados no console para debug (depuração)
+                // formData.entries() retorna um iterador com todos os pares chave-valor
+                for (let [key, value] of formData.entries()) {
+                    // Exibe cada campo e seu valor no console do navegador
+                    console.log(key + ': ' + value);
+                }
+                
+                // Seleciona o botão de enviar dentro do formulário
+                const submitBtn = formContato.querySelector('button[type="submit"]');
+                
+                // Guarda o texto original do botão para restaurar depois do envio
+                const originalText = submitBtn.innerHTML;
+                
+                // Altera o texto do botão para mostrar um spinner de carregamento
+                // "spinner-border spinner-border-sm" são classes do Bootstrap para animação
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Enviando...';
+                
+                // Desabilita o botão para evitar que o usuário clique múltiplas vezes
+                submitBtn.disabled = true;
+                
+                // ==================================================
+                // ENVIO DOS DADOS VIA FETCH API (AJAX MODERNO)
+                // ==================================================
+                
+                // fetch() faz uma requisição HTTP para o servidor
+                // 'http://localhost:8080/processa_contato.php' é o script PHP que processa os dados
+                fetch('http://localhost:8080/processa_contato.php', {
+                    method: 'POST', // Método HTTP POST para enviar dados
+                    body: formData  // Os dados do formulário a serem enviados
+                    })
+                // .then() é executado quando a resposta do servidor chega
+                .then(response => {
+                    // Exibe o status HTTP da resposta no console (200 = sucesso, 404 = não encontrado, etc.)
+                    console.log(' Status da resposta:', response.status);
+                    
+                    // Verifica se a resposta foi bem-sucedida (status entre 200-299)
+                    if (!response.ok) {
+                        // Se não foi bem-sucedida, lança um erro com o status
+                        throw new Error('Erro HTTP: ' + response.status);
+                    }
+                    
+                    // Converte a resposta para texto primeiro (em vez de JSON direto)
+                    return response.text().then(text => {
+                        try {
+                            // Tenta converter o texto para JSON
+                            return JSON.parse(text);
+                        } catch (e) {
+                            // Se não for JSON válido, exibe erro no console
+                            console.error(' Resposta não é JSON:', text);
+                            // Lança um erro informando que a resposta é inválida
+                            throw new Error('Resposta inválida do servidor');
+                        }
+                    });
+                })
+                // Este .then() recebe os dados já convertidos para JSON
+                .then(data => {
+                    // Exibe os dados retornados pelo servidor no console
+                    console.log(' Dados recebidos:', data);
+                    
+                    // Verifica se a operação foi bem-sucedida no servidor
+                    if (data.success) {
+                        // Se foi bem-sucedido:
+                        // Cria uma instância do modal de sucesso do Bootstrap
+                        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                        
+                        // Exibe o modal na tela
+                        successModal.show();
+                        
+                        // Limpa todos os campos do formulário
+                        formContato.reset();
+                        
+                        // Remove as classes de validação visual
+                        formContato.classList.remove('was-validated');
+                    } else {
+                        // Se houve erro no servidor, mostra alerta com a mensagem
+                        alert('Erro: ' + data.message);
+                    }
+                })
+                // .catch() captura QUALQUER erro que ocorra durante todo o processo
+                .catch(error => {
+                    // Exibe o erro completo no console para debugging
+                    console.error(' Erro completo:', error);
+                    
+                    // Mostra um alerta para o usuário com a mensagem de erro
+                    alert('Erro ao enviar mensagem: ' + error.message);
+                })
+                // .finally() é executado SEMPRE, independente de sucesso ou erro
+                .finally(() => {
+                    // Restaura o texto original do botão
+                    submitBtn.innerHTML = originalText;
+                    
+                    // Reabilita o botão para permitir novos envios
+                    submitBtn.disabled = false;
+                });
+            });
+        } else {
+            // Se o formulário não for encontrado, exibe mensagem de erro no console
+            console.log(' Formulário NÃO encontrado!');
+        }
+    });
+    </script>
+    </body>
+    <!-- Fim do corpo do documento HTML -->
+    </html>
+    <!-- Fim do documento HTML -->

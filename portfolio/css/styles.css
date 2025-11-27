@@ -1,0 +1,456 @@
+/* ================================================== */
+/* VARIÁVEIS CSS PERSONALIZADAS (CUSTOM PROPERTIES) */
+/* ================================================== */
+:root {
+    /* Define cores personalizadas baseadas no Bootstrap */
+    --bs-primary: #007bff;    /* Azul principal */
+    --bs-secondary: #6c757d;  /* Cinza secundário */
+    --bs-success: #28a745;    /* Verde para sucesso */
+    --bs-info: #17a2b8;       /* Azul claro para informações */
+    --bs-warning: #ffc107;    /* Amarelo para alertas */
+    --bs-danger: #dc3545;     /* Vermelho para erros */
+    --bs-light: #f8f9fa;      /* Cinza muito claro */
+    --bs-dark: #343a40;       /* Preto/cinza escuro */
+}
+
+/* ================================================== */
+/* RESET E CONFIGURAÇÕES BASE */
+/* ================================================== */
+* {
+    margin: 0;          /* Remove margens padrão de todos os elementos */
+    padding: 0;         /* Remove paddings padrão de todos os elementos */
+    box-sizing: border-box; /* Inclui padding e border no cálculo do width/height */
+}
+
+html {
+    scroll-behavior: smooth; /* Faz o scroll da página ser suave ao clicar em links âncora */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define fonte padrão */
+    line-height: 1.6;   /* Espaçamento entre linhas para melhor legibilidade */
+    color: #333;        /* Cor do texto padrão - cinza escuro */
+    overflow-x: hidden; /* Esconde scroll horizontal se necessário */
+    padding-top: 76px;  /* Compensa a altura da navbar fixa no topo */
+}
+
+/* ================================================== */
+/* SISTEMAS DE LAYOUT RESPONSIVO */
+/* ================================================== */
+
+/* Container fluído personalizado */
+.container-fluid-custom {
+    width: 100%;                    /* Ocupa 100% da largura disponível */
+    padding-right: 15px;           /* Padding direito padrão */
+    padding-left: 15px;            /* Padding esquerdo padrão */
+    margin-right: auto;            /* Centraliza o container */
+    margin-left: auto;             /* Centraliza o container */
+}
+
+/* Sistema de Grid responsivo usando CSS Grid */
+.responsive-grid {
+    display: grid;                  /* Ativa o display grid */
+    gap: 1.5rem;                   /* Espaço entre os itens do grid */
+    /* Cria colunas que se ajustam automaticamente, mínimo 300px */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+
+/* Sistema de layout usando Flexbox */
+.flex-responsive {
+    display: flex;      /* Ativa o display flex */
+    flex-wrap: wrap;    /* Permite que os itens quebrem linha se necessário */
+    gap: 1rem;         /* Espaço entre os itens flex */
+}
+
+.flex-responsive > * {
+    flex: 1 1 300px;   /* Itens crescem, encolhem e tem base de 300px */
+}
+
+/* ================================================== */
+/* BOTÕES PERSONALIZADOS */
+/* ================================================== */
+.btn-custom {
+    /* Botão com padding responsivo */
+    padding: clamp(12px, 3vw, 18px) clamp(24px, 5vw, 36px);
+    font-size: clamp(1rem, 3vw, 1.25rem); /* Tamanho de fonte responsivo */
+    border-radius: 50px;          /* Bordas completamente arredondadas */
+    transition: all 0.3s ease;    /* Transição suave para todas as propriedades */
+    text-decoration: none;        /* Remove sublinhado de links */
+    display: inline-block;        /* Permite padding e margin */
+    border: none;                 /* Remove borda padrão */
+    cursor: pointer;              /* Cursor de pointer ao passar mouse */
+}
+
+.btn-custom:hover {
+    transform: translateY(-3px);  /* Levanta o botão 3px no hover */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* Sombra mais pronunciada */
+}
+
+/* ================================================== */
+/* HERO SECTION COM IMAGEM DE FUNDO (PÁGINA PRINCIPAL) */
+/* ================================================== */
+.hero-section-with-bg {
+    /* Fundo com gradiente escuro sobre a imagem */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../imagens/foto.inicial.jpg');
+    background-size: cover;         /* Cobrir toda a área disponível */
+    background-position: center;    /* Centralizar a imagem */
+    background-attachment: fixed;   /* Efeito parallax - fundo fixo */
+    min-height: 80vh;             /* Mínimo altura da tela inteira */
+    display: flex;                  /* Flexbox para centralizar conteúdo */
+    align-items: center;           /* Centraliza verticalmente */
+    justify-content: center;       /* Centraliza horizontalmente */
+    text-align: center;            /* Texto centralizado */
+    padding: 0.50rem 1rem;
+    margin-top: 0px;          /* Compensa navbar fixa */
+}
+
+.hero-section-with-bg h1 {
+    /* Título responsivo que se adapta ao tamanho da tela */
+    color: #00158d;
+    font-size: clamp(2rem, 8vw, 4rem); /* Mín 2rem, ideal 8vw, máx 4rem */
+    margin-bottom: 1.5rem;          /* Espaço abaixo do título */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Sombra no texto */
+    font-weight: 700;               /* Peso da fonte - negrito */
+    line-height: 1.2;               /* Altura da linha */
+}
+
+.hero-section-with-bg .lead {
+    font-size: clamp(1rem, 3vw, 1.4rem); /* Texto menor que o título */
+    color: #00158d;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    max-width: 600px;              /* Largura máxima para melhor leitura */
+    margin-left: auto;             /* Centraliza o elemento */
+    margin-right: auto;            /* Centraliza o elemento */
+}
+
+.hero-section-with-bg p {
+     /* Texto do index embaixo do título */
+    font-size: clamp(1rem, 3vw, 1.4rem); /* Texto menor que o título */
+    color: #00158d;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    max-width: 600px;              /* Largura máxima para melhor leitura */
+    margin-left: auto;             /* Centraliza o elemento */
+    margin-right: auto;            /* Centraliza o elemento */
+}
+
+/* ================================================== */
+/* CARDS PERSONALIZADOS */
+/* ================================================== */
+
+.card-custom {
+    border: none;                           /* Remove borda padrão */
+    border-radius: 15px;                   /* Bordas arredondadas */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra suave */
+    transition: all 0.3s ease;             /* Transição suave */
+    overflow: hidden;                      /* Esconde conteúdo que ultrapassa */
+    margin-bottom: 1.5rem;                /* Espaço abaixo do card */
+    width: 100%;                          /* Largura total do container */
+    
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);           /* Levanta o card no hover */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* Sombra mais forte no hover */
+}
+
+.card-custom .card-body {
+    padding: clamp(1rem, 3vw, 2rem);      /* Padding responsivo */
+}
+
+/* Cards específicos para projetos GitHub */
+.project-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;            /* Borda sutil */
+}
+
+.project-card:hover {
+    transform: translateY(-3px);          /* Efeito mais suave que card-custom */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-color: var(--bs-primary);      /* Borda fica azul no hover */
+}
+
+/* ================================================== */
+/* NAVBAR PERSONALIZADA */
+/* ================================================== */
+.navbar-custom {
+    /* Gradiente de fundo para navbar */
+    background: linear-gradient(135deg, rgb(15, 7, 61) 0%, #002a9c 100%);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Sombra sutil */
+    padding: 0.90rem;                   /* Padding vertical */
+}
+
+.navbar-brand-custom {
+    font-weight: 700;                     /* Negrito */
+    font-size: clamp(1.1rem, 4vw, 1.5rem); /* Tamanho responsivo */
+}
+
+.navbar-nav .nav-link {
+    font-size: clamp(0.9rem, 2.5vw, 1rem); /* Tamanho responsivo */
+    padding: 0.5rem 1rem;                 /* Padding interno */
+    transition: all 0.3s ease;            /* Transição suave */
+}
+
+/* ================================================== */
+/* FOTO DE PERFIL MAIOR (SOBRE MIM) */
+/* ================================================== */
+.foto-perfil {
+    width: 100%;                          /* Largura responsiva */
+    max-width: 400px;                     /* Largura máxima aumentada */
+    height: auto;                         /* Altura automática para manter proporção */
+    border: 8px solid white;              /* Borda branca mais grossa */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15); /* Sombra mais pronunciada */
+    transition: all 0.3s ease;            /* Transição suave */
+}
+
+.foto-perfil:hover {
+    transform: scale(1.02);               /* Aumenta levemente no hover */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2); /* Sombra mais forte no hover */
+}
+
+/* ================================================== */
+/* SEÇÃO SOBRE MIM */
+/* ================================================== */
+.sobre-mim-section {
+    background-color: #f8f9fa;            /* Fundo cinza claro */
+    min-height: 100vh;                    /* Mínimo altura da tela */
+    padding: 2rem 0;                      /* Padding vertical */
+}
+
+/* ================================================== */
+/* SEÇÃO CONTATO */
+/* ================================================== */
+.contato {
+    background-color: #f8f9fa;            /* Fundo cinza claro */
+    min-height: 100vh;                    /* Mínimo altura da tela */
+    padding-top: 2rem;                    /* Padding top */
+}
+
+/* ================================================== */
+/* COMPONENTES BOOTSTRAP PERSONALIZADOS */
+/* ================================================== */
+
+/* Badges (etiquetas) responsivas */
+.badge {
+    font-size: clamp(0.7rem, 2vw, 0.8rem); /* Tamanho responsivo */
+    padding: 0.4rem 0.8rem;               /* Padding interno */
+    margin: 0.2rem;                       /* Margem entre badges */
+}
+
+/* Barras de progresso responsivas */
+.progress {
+    height: clamp(1.25rem, 3vw, 1.5rem);  /* Altura responsiva */
+    margin-bottom: 1rem;                  /* Espaço abaixo */
+}
+
+.progress-bar {
+    font-size: clamp(0.8rem, 2vw, 0.9rem); /* Texto responsivo */
+    font-weight: 600;                     /* Texto semi-negrito */
+    display: flex;                        /* Flexbox para centralizar texto */
+    align-items: center;                  /* Centraliza verticalmente */
+    justify-content: center;              /* Centraliza horizontalmente */
+}
+
+/* Tabelas responsivas */
+.table-responsive {
+    border-radius: 10px;                  /* Bordas arredondadas */
+    overflow: hidden;                     /* Esconde bordas da tabela */
+    margin: 1rem 0;                       /* Margem vertical */
+}
+
+.table {
+    font-size: clamp(0.8rem, 2vw, 0.9rem); /* Texto responsivo */
+}
+
+/* Formulários responsivos */
+.form-control {
+    font-size: clamp(0.9rem, 2.5vw, 1rem); /* Tamanho de fonte responsivo */
+    padding: 0.75rem 1rem;                /* Padding interno */
+}
+
+.form-label {
+    font-size: clamp(0.9rem, 2.5vw, 1rem); /* Tamanho responsivo */
+    font-weight: 600;                     /* Semi-negrito */
+}
+
+/* Alertas responsivos */
+.alert {
+    border: none;                         /* Remove borda padrão */
+    border-radius: 10px;                  /* Bordas arredondadas */
+    font-weight: 500;                     /* Peso médio da fonte */
+    font-size: clamp(0.9rem, 2.5vw, 1rem); /* Tamanho responsivo */
+    padding: 1rem 1.25rem;                /* Padding interno */
+}
+
+/* ================================================== */
+/* MEDIA QUERIES - RESPONSIVIDADE ESPECÍFICA */
+/* ================================================== */
+
+/* Dispositivos móveis (até 768px) */
+@media (max-width: 768px) {
+    .hero-section-with-bg {
+        background-attachment: scroll;    /* Remove parallax em mobile (performance) */
+        padding: 4rem 1rem;               /* Aumenta padding */
+        margin-top: 66px;                 /* Ajusta margem top */
+    }
+    
+    .hero-section-with-bg h1 {
+        margin-bottom: 1rem;              /* Reduz margem inferior */
+    }
+    
+    .hero-section-with-bg .lead {
+        margin-bottom: 1.5rem;            /* Reduz margem inferior */
+    }
+
+    body {
+        padding-top: 66px;                /* Ajusta padding top do body */
+    }
+
+    .foto-perfil {
+        max-width: 280px;                 /* Reduz tamanho máximo da foto */
+        border-width: 5px;                /* Reduz grossura da borda */
+        margin-bottom: 2rem;              /* Adiciona margem inferior */
+    }
+}
+
+/* Dispositivos muito pequenos (até 375px - iPhone SE, etc) */
+@media (max-width: 375px) {
+    .container {
+        padding-left: 10px;               /* Reduz padding lateral */
+        padding-right: 10px;
+    }
+    
+    .card-custom .card-body {
+        padding: 1rem;                    /* Reduz padding dos cards */
+    }
+    
+    .btn-custom {
+        width: 100%;                      /* Botão ocupa largura total */
+        text-align: center;               /* Texto centralizado */
+    }
+
+    .foto-perfil {
+        max-width: 250px;                 /* Reduz ainda mais a foto */
+        border-width: 4px;                /* Borda mais fina */
+    }
+}
+
+/* Tablets (768px para baixo) */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;               /* Centraliza itens do menu */
+        padding: 1rem 0;                  /* Adiciona padding vertical */
+    }
+    
+    .sobre-mim-section .row {
+        text-align: center;               /* Centraliza conteúdo */
+    }
+}
+
+/* Tablets na horizontal (992px para baixo) */
+@media (max-width: 992px) {
+    .foto-perfil {
+        max-width: 300px;                 /* Tamanho intermediário para tablets */
+        border-width: 6px;                /* Borda intermediária */
+    }
+
+    .responsive-grid {
+        /* Ajusta grid para colunas menores em tablets */
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    }
+    
+    .flex-responsive > * {
+        flex: 1 1 250px;                  /* Itens flex com base menor */
+    }
+}
+
+/* Desktop grandes (1200px para cima) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;                /* Limita largura máxima */
+    }
+}
+
+/* ================================================== */
+/* ANIMAÇÕES E TRANSITIONS */
+/* ================================================== */
+
+.fade-in {
+    animation: fadeIn 0.8s ease-in;       /* Animação de entrada com fade */
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;                       /* Invisível no início */
+        transform: translateY(30px);      /* Começa 30px abaixo */
+    }
+    to { 
+        opacity: 1;                       /* Totalmente visível */
+        transform: translateY(0);         /* Posição normal */
+    }
+}
+
+/* ================================================== */
+/* ACESSIBILIDADE */
+/* ================================================== */
+
+/* Reduz movimento para usuários que preferem */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;     /* Quase instantâneo */
+        animation-iteration-count: 1 !important;   /* Executa apenas uma vez */
+        transition-duration: 0.01ms !important;    /* Transição instantânea */
+    }
+}
+
+/* Suporte a alto contraste */
+@media (prefers-contrast: high) {
+    .card-custom {
+        border: 2px solid #000;           /* Borda preta sólida */
+    }
+    
+    .btn-custom {
+        border: 2px solid;                /* Borda sólida nos botões */
+    }
+}
+
+/* Suporte a modo escuro */
+@media (prefers-color-scheme: dark) {
+    .sobre-mim-section,
+    .contato {
+        background-color: #1a1a1a;        /* Fundo escuro */
+        color: #ffffff;                   /* Texto branco */
+    }
+    
+    .card-custom {
+        background-color: #2d2d2d;        /* Card escuro */
+        color: #ffffff;                   /* Texto branco */
+    }
+}
+
+/* ================================================== */
+/* FALLBACKS E CORREÇÕES */
+/* ================================================== */
+
+/* Fallback caso a imagem de fundo não carregue */
+.hero-section-with-bg {
+    background-color: #667eea;            /* Cor sólida de fallback */
+    background-blend-mode: overlay;       /* Modo de mesclagem */
+}
+
+/* Ajustes específicos para a página Sobre Mim */
+.sobre-mim-section .card-custom {
+    margin-top: 0;                        /* Remove margem top do card */
+}
+
+/* Ajustes de espaçamento para mobile */
+@media (max-width: 768px) {
+    .sobre-mim-section {
+        padding: 1rem 0;                  /* Padding reduzido em mobile */
+    }
+    
+    .sobre-mim-section .row {
+        text-align: center;               /* Conteúdo centralizado em mobile */
+    }
+}
